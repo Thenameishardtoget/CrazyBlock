@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="800,600">
+  <displayList>
+    <text id="n0_ceg3" name="n0" xy="264,288" size="168,104" fontSize="80" text="Test"/>
+  </displayList>
+  <transition name="t0">
+    <item time="0" type="XY" target="n0_ceg3" value="264,288.5"/>
+    <item time="19" type="XY" target="n0_ceg3" value="264,288.5"/>
+  </transition>
+  <transition name="t1">
+    <item time="0" type="Color" target="n0_ceg3" value="#000000"/>
+    <item time="18" type="Color" target="n0_ceg3" value="#cc3333"/>
+  </transition>
+</component>
