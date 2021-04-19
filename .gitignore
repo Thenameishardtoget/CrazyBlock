@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/CrazyBlock_FGUI/.objs/
+/CrazyBlock_FGUI/settings/
+/.idea/
