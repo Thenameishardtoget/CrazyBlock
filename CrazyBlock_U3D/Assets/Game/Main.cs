@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using FairyGUI;
 using Frame;
 using Frame.FGUI;
@@ -18,6 +19,7 @@ public class Main : MonoBehaviour
         
         Debug.Log(UIPackage.AddPackage("Test").name);
         
+        GameCore.Move();    
     }
 
     // Update is called once per frame
@@ -30,7 +32,15 @@ public class Main : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            GameCore.CreateBlock();
+            if (GameModel.Instance.GamePresenter.GameState != GameState.Move)
+            {
+                GameCore.Move();    
+            }
+            else
+            {
+                GameCore.Drop();
+            }
+            
         }
     }
 }
