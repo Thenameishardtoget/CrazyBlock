@@ -9,6 +9,7 @@ using UnityEngine;
 public class GameCore
 {
     private static Transform last;
+    private static float lastY;
     public static GameObject CreateBlock()
     {
         GameObject go = GameObject.Instantiate(Resources.Load<GameObject>("Cube"));
@@ -21,8 +22,8 @@ public class GameCore
         
         if (last)
         {
-            Vector3 start = new Vector3(20, last.position.y + go.transform.lossyScale.y + 5, 100);
-            Vector3 end = new Vector3(-20, last.position.y + go.transform.lossyScale.y + 5, 100);
+            Vector3 start = new Vector3(20, lastY + go.transform.lossyScale.y + 5, 100);
+            Vector3 end = new Vector3(-20, lastY + go.transform.lossyScale.y + 5, 100);
             go.transform.position = start;
             var tween = go.transform.DOMove(end, 5);
             tween.SetLoops(-1, LoopType.Yoyo);
@@ -37,9 +38,12 @@ public class GameCore
             rig.freezeRotation = true;
             rig.useGravity = false;
             go.isStatic = true;
+            rig.isKinematic = true;
+            
         }
         
         last = go.transform;
+        lastY = go.transform.position.y;
         var presenter = GameModel.Instance.GetPresenter<GamePresenter>();
         presenter.GameState = GameState.Move;
     }
